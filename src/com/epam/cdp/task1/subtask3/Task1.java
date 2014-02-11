@@ -1,10 +1,11 @@
 package com.epam.cdp.task1.subtask3;
 
-import com.epam.cdp.task1.subtask3.storage.*;
+import com.epam.cdp.task1.subtask3.storage.HashMapStorage;
+import com.epam.cdp.task1.subtask3.storage.Storage;
+import com.epam.cdp.task1.subtask3.storage.TreeMapStorage;
 import sun.misc.Regexp;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -14,40 +15,18 @@ import java.util.regex.Pattern;
  * Created by Mariia_Lukianets on 05.02.14.
  */
 public class Task1 {
-    static private Pattern pattern = Pattern.compile("([a-zA-Z]+)(.*)");
-
     public static void main(String[] args) throws IOException {
 
-//        BufferedReader br = new BufferedReader(new FileReader("wap.txt"));
-//        String line = br.readLine();
+        Pattern pattern = Pattern.compile("([a-zA-Z]+)(.*)");
 
-        Storage hashMapStorage = new HashMapStorage();
-        System.out.println("HashMap:");
-        testStorage(hashMapStorage, "wap.txt");
-
-        Storage treeMapStorage = new TreeMapStorage();
-        System.out.println("TreeMap:");
-        testStorage(treeMapStorage, "wap.txt");
-
-        Storage arrayListStorage = new ArrayListStorage();
-        System.out.println("ArrayListMap:");
-        testStorage(arrayListStorage, "wap.txt");
-
-        Storage linkedListStorage = new LinkedListStorage();
-        System.out.println("LinkedListMap:");
-        testStorage(linkedListStorage, "wap.txt");
-    }
-
-    static public void testStorage(Storage storage, String fileName) throws IOException {
-        long start, end;
-        int entryCount, uniqueWordsCount;
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        BufferedReader br = new BufferedReader(new FileReader("wap.txt"));
         String line = br.readLine();
 
+        Storage hashMapStorage = new HashMapStorage();
+        Storage treeMapStorage = new TreeMapStorage();
         String[] words;
         Matcher matcher;
 
-        start = System.currentTimeMillis();
         while (line != null) {
             words = line.split(" ");
             for(String word : words) {
@@ -55,25 +34,36 @@ public class Task1 {
                 if(matcher.matches()) {
                     word = matcher.group(1);
 
-                    storage.add(word.toLowerCase());
+                    hashMapStorage.add(word.toLowerCase());
+                    treeMapStorage.add(word.toLowerCase());
                 }
             }
             line = br.readLine();
         }
-        //initializing time
-        end = System.currentTimeMillis();
-        System.out.println("Initializing time: " + (end - start));
 
-        //
-        start = System.currentTimeMillis();
-        entryCount = storage.entryCount("love");
-        uniqueWordsCount = storage.uniqueWordsCount();
+        test(hashMapStorage);
+        test(treeMapStorage);
 
-        end = System.currentTimeMillis();
+    }
 
-        System.out.println("Time: " + (end - start));
-        System.out.println("entry count: " + entryCount + ", unique words: " + uniqueWordsCount + "\n");
+    static public void test(Storage storage) {
+        int entryCount;
+        int uniqueWordsCount;
+        long start;
+        long end;
 
+        for(int i = 0; i < 3; i++) {
+            start = System.currentTimeMillis();
+
+            entryCount = storage.entryCount("love");
+            uniqueWordsCount = storage.uniqueWordsCount();
+
+            end = System.currentTimeMillis();
+
+            System.out.println(i + "Time: " + (end - start));
+
+        }
+        System.out.println();
     }
 }
 

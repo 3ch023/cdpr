@@ -10,6 +10,7 @@ import java.util.TreeMap;
  */
 public class TreeMapStorage extends MapStorage {
     public TreeMapStorage() {
-        this.internalStorage = new TreeMap<String, Integer>();
+        this.storage = new TreeMap<String, Integer>();
     }
+
 }

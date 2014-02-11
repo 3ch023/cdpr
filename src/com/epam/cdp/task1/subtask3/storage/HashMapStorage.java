@@ -8,6 +8,7 @@ import java.util.Map;
  */
 public class HashMapStorage extends MapStorage {
     public HashMapStorage() {
-        this.internalStorage = new HashMap<String, Integer>();
+        this.storage = new HashMap<String, Integer>();
     }
+
 }
