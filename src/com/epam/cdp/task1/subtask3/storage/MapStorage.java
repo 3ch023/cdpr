@@ -1,11 +1,11 @@
-package com.epam.cdp.task1;
+package com.epam.cdp.task1.subtask3.storage;
 
 import java.util.Map;
 
 /**
  * Created by Mariia_Lukianets on 07.02.14.
  */
-public abstract class MapStorage implements Storage{
+public abstract class MapStorage implements Storage {
     Map<String, Integer> storage;
 
     @Override
