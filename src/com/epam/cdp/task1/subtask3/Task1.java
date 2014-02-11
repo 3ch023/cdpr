@@ -1,5 +1,8 @@
-package com.epam.cdp.task1;
+package com.epam.cdp.task1.subtask3;
 
+import com.epam.cdp.task1.subtask3.storage.HashMapStorage;
+import com.epam.cdp.task1.subtask3.storage.Storage;
+import com.epam.cdp.task1.subtask3.storage.TreeMapStorage;
 import sun.misc.Regexp;
 
 import java.io.BufferedReader;

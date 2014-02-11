@@ -1,4 +1,4 @@
-package com.epam.cdp.task1;
+package com.epam.cdp.task1.subtask3.storage;
 
 /**
  * Created by Mariia_Lukianets on 05.02.14.

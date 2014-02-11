@@ -1,4 +1,4 @@
-package com.epam.cdp.task1;
+package com.epam.cdp.task1.subtask3.storage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by Mariia_Lukianets on 05.02.14.
  */
-public class HashMapStorage extends MapStorage{
+public class HashMapStorage extends MapStorage {
     public HashMapStorage() {
         this.storage = new HashMap<String, Integer>();
     }
